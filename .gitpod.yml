@@ -1,0 +1,15 @@
+image: gitpod/workspace-full
+
+tasks:
+  - name: Redis + Maven Setup
+    init: |
+      sudo apt-get update
+      sudo apt-get install -y redis-server
+      sudo service redis-server start
+    command: |
+      /mvnw clean install
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - redhat.java
