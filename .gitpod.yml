@@ -1,4 +1,4 @@
-image: gitpod/workspace-full
+image: .gitpod/Dockerfile
 
 tasks:
     - name: setup
