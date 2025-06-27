@@ -3,20 +3,8 @@ image: .gitpod/Dockerfile
 tasks:
     - name: setup
       init: |
-       curl -s "https://get.sdkman.io" | bash
-       source "$HOME/.sdkman/bin/sdkman-init.sh"
-       sdk install java 24.zulu
-       sdk default java 24.zulu
        java -version
        docker run -d --name redis-server -p 6379:6379 redis
-
-    - name: Redis + Maven Setup
-      init: |
-        sudo apt-get update
-        sudo apt-get install -y redis-server
-        sudo service redis-server start
-      command: |
-        /mvnw clean install
 
 vscode:
   extensions:
