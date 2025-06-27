@@ -2,18 +2,13 @@ image: gitpod/workspace-full
 
 tasks:
     - name: setup
-      before: |
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
-        sudo apt-add-repository -y "deb http://repos.azulsystems.com/ubuntu stable main"
-        sudo apt-get update
-        sudo apt-get install -y zulu24-jdk
-
-        sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/zulu24*/bin/java 1
-        sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/zulu24*/bin/javac 1
-        sudo update-alternatives --set java /usr/lib/jvm/zulu24*/bin/java
-        sudo update-alternatives --set javac /usr/lib/jvm/zulu24*/bin/javac
-
-        java -version
+      init: |
+       curl -s "https://get.sdkman.io" | bash
+       source "$HOME/.sdkman/bin/sdkman-init.sh"
+       sdk install java 24.zulu
+       sdk default java 24.zulu
+       java -version
+       docker run -d --name redis-server -p 6379:6379 redis
 
     - name: Redis + Maven Setup
       init: |

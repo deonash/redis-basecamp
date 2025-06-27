@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
  *
  */
 @SpringBootApplication
-@RestController
 public class RedisSpringbootApplication  
 {
     public static void main( String[] args )
@@ -16,8 +15,5 @@ public class RedisSpringbootApplication
          SpringApplication.run(RedisSpringbootApplication.class, args);
     }
 
-    @GetMapping("/")
-    public String hello(){
-        return "Hello from gipod springboot ...";
-    }
+
 }
