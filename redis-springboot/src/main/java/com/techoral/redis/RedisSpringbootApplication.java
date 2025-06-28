@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
  *
  */
 @SpringBootApplication
+@RestController
 public class RedisSpringbootApplication  
 {
     public static void main( String[] args )
@@ -15,5 +16,9 @@ public class RedisSpringbootApplication
          SpringApplication.run(RedisSpringbootApplication.class, args);
     }
 
+    @GetMapping("/")
+    public String getGeeting(){
+        return "CloubBurst Services - hosted on GitPOD ";
+    }
 
 }
