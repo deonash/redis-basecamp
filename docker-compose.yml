@@ -12,6 +12,11 @@ services:
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://admin:admin@mongo:27017/cloudburst?authSource=admin
       SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    
+    volumes:
+      - ./logs:/app/logs
+    
 
   mongo:
     image: mongo
