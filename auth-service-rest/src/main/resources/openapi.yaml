@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  description: Login and registration API supporting OAuth2/OpenID
+  title: Auth API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /auth/register:
+    post:
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      responses:
+        "201":
+          description: User successfully registered
+        "400":
+          description: Bad request
+      summary: Register a new user
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /auth/login:
+    post:
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: Login successful
+        "401":
+          description: Unauthorized
+      summary: User login
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    RegisterRequest:
+      example:
+        password: password
+        fullName: fullName
+        email: email
+      properties:
+        email:
+          format: email
+          type: string
+        password:
+          format: password
+          type: string
+        fullName:
+          type: string
+      required:
+      - email
+      - fullName
+      - password
+      type: object
+    LoginRequest:
+      example:
+        password: password
+        email: email
+      properties:
+        email:
+          format: email
+          type: string
+        password:
+          format: password
+          type: string
+      required:
+      - email
+      - password
+      type: object
