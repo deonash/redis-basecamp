@@ -1,4 +1,8 @@
 spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/cloudburst?authSource=admin
+
   redis:
     host: localhost
     port: 6379
